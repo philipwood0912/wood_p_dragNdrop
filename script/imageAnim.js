@@ -64,6 +64,23 @@
             }
 		});
         
+        //Reset pieces when clicked to the pieces board
+        zone.addEventListener("click", function(e) {
+            console.log('clicked me');
+            
+            //take images removes it and places back into pieces board
+            let images = e.target;
+            zone.removeChild(images);
+            piecesBoard.appendChild(images);
+            dropCounter = 0;
+            }); 
+        
+        //drag start in zone, resets counter to 0 to allow another piece into zone
+        zone.addEventListener('dragstart', function(e) {
+            console.log('drag');
+            dropCounter = 0;
+        });
+        
         //counter reset on puzzle selector click
         puzzleSelectors.forEach(puzzle => puzzle.addEventListener('click', function(e) {
             dropCounter = 0;
