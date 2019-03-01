@@ -5,9 +5,8 @@
 	// const never changes
 	let piecesBoard = document.querySelector(".puzzle-pieces"),
 		puzzleBoard = document.querySelector(".puzzle-board"),
-		puzzleSelectors = document.querySelectorAll("#buttonHolder img");
-
-	let dropZones = document.querySelectorAll('.drop-zone');
+		puzzleSelectors = document.querySelectorAll("#buttonHolder img"),
+        dropZones = document.querySelectorAll('.drop-zone');
 
 	// functions go in the middle
 	function createPuzzlePieces(pictureIndex) {
@@ -52,12 +51,18 @@
 			e.target.appendChild(document.querySelector(`#${piece}`));
 		});
 	});
-
+    
+    function resetDropZone() {
+        dropZones.forEach(zone => {
+            zone.innerHTML = "";
+        });
+    }
 
 
 	function resetPuzzlePieces() {
 		// empty the thumbnail container
 		piecesBoard.innerHTML = "";
+        resetDropZone();
 		createPuzzlePieces(this.dataset.puzzleref);
 	}
 
